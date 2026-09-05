@@ -61,14 +61,8 @@ location:        Bengaluru, India
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=shiveshmehta09&show_icons=true&theme=dark&hide_border=false&border_color=3DDC84&bg_color=0D1117&title_color=3DDC84&text_color=E0E0E0&icon_color=3DDC84&include_all_commits=true&count_private=true" alt="GitHub stats" />
+
 <img height="165" src="https://streak-stats.demolab.com?user=shiveshmehta09&theme=dark&hide_border=false&border=3DDC84&stroke=3DDC84&ring=3DDC84&fire=FFD700&currStreakLabel=3DDC84&sideLabels=E0E0E0&background=0D1117" alt="GitHub streak" />
-
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shiveshmehta09&layout=compact&theme=dark&hide_border=false&border_color=3DDC84&bg_color=0D1117&title_color=3DDC84&text_color=E0E0E0&langs_count=8" alt="Top languages" />
-
-<img src="https://github-profile-trophy.vercel.app/?username=shiveshmehta09&theme=onedark&no-frame=true&column=7&margin-w=6" alt="Trophies" />
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=shiveshmehta09&bg_color=0D1117&color=3DDC84&line=3DDC84&point=FFFFFF&area=true&hide_border=true" alt="Activity graph" />
 
 ### Contribution stream
 
