@@ -84,7 +84,6 @@ location:        Bengaluru, India
 
 <a href="https://www.linkedin.com/in/shivesh-karan/"><img src="https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0D1117" alt="LinkedIn" /></a>
 <a href="https://github.com/shiveshmehta09"><img src="https://img.shields.io/badge/GITHUB-E0E0E0?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117" alt="GitHub" /></a>
-<a href="https://github.com/lenskart"><img src="https://img.shields.io/badge/LENSKART-3DDC84?style=for-the-badge&logo=android&logoColor=white&labelColor=0D1117" alt="Lenskart" /></a>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,40:1B6B4A,100:3DDC84&height=100&section=footer&text=BUILD%20SUCCESSFUL&fontSize=24&fontColor=ffffff&animation=twinkling&fontAlignY=65" />
 
