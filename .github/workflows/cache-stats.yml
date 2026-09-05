@@ -1,0 +1,55 @@
+# Save as .github/workflows/cache-stats.yml
+# Fetches the stat SVGs and commits them to assets/ so the README never
+# depends on a third-party service being up at page-load time.
+
+name: Cache stat cards
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  cache:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      USER: shiveshmehta09
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch cards
+        run: |
+          mkdir -p assets
+
+          fetch() {
+            name="$1"; url="$2"; tmp="$(mktemp)"
+            for attempt in 1 2 3 4 5; do
+              if curl -fsSL --max-time 45 "$url" -o "$tmp"; then
+                # the services return HTTP 200 with an error SVG when rate-limited
+                if grep -qiE "Something went wrong|Maximum retries|rate limit" "$tmp"; then
+                  echo "attempt $attempt: $name rate-limited, retrying"
+                elif [ -s "$tmp" ] && head -c 200 "$tmp" | grep -q "<svg"; then
+                  mv "$tmp" "assets/$name.svg"
+                  echo "$name OK"
+                  return 0
+                fi
+              fi
+              sleep $((attempt * 20))
+            done
+            echo "$name failed - keeping previous version"
+          }
+
+          fetch stats "https://github-readme-stats.vercel.app/api?username=$USER&show_icons=true&theme=dark&hide_border=false&border_color=3DDC84&bg_color=0D1117&title_color=3DDC84&text_color=E0E0E0&icon_color=3DDC84&include_all_commits=true&count_private=true"
+          fetch top-langs "https://github-readme-stats.vercel.app/api/top-langs/?username=$USER&layout=compact&theme=dark&hide_border=false&border_color=3DDC84&bg_color=0D1117&title_color=3DDC84&text_color=E0E0E0&langs_count=8"
+          fetch trophies "https://github-profile-trophy.vercel.app/?username=$USER&theme=onedark&no-frame=true&column=7&margin-w=6"
+          fetch activity "https://github-readme-activity-graph.vercel.app/graph?username=$USER&bg_color=0D1117&color=3DDC84&line=3DDC84&point=FFFFFF&area=true&hide_border=true"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git diff --staged --quiet || git commit -m "chore: refresh stat cards"
+          git push
